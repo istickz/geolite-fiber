@@ -11,7 +11,7 @@ go run geoip-maxmind
 ```
 
 ### Usage
-Make a request to `http://127.0.0.1:3000/geocountry/46.88.89.152` or `http://127.0.0.1:3000/geocity/91.103.9.225` for example. 
+Make a request to `http://127.0.0.1:3000/geocountry/46.88.89.152` or `http://127.0.0.1:3000/geocity/46.88.89.152` for example. 
 You can omit an IP address to use your current IP address, or replace to use another. If the IP address is invalid, you will receive an HTTP 400 error.
 
 The response fields can be modified from the `ipLookup` struct, found in the `handlers/handlers.go` file.
