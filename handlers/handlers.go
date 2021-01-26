@@ -48,3 +48,7 @@ func GeoIP(c *fiber.Ctx, findType string) error {
 
 	return c.JSON(record)
 }
+
+func CloseDB() error {
+	return db.Close()
+}

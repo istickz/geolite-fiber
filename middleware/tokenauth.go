@@ -3,7 +3,23 @@ package tokenauth
 import (
 	"errors"
 	"github.com/gofiber/fiber/v2"
+	"log"
+	"os"
 )
+
+
+var appToken string
+
+func init()  {
+	var exists bool
+
+	appToken, exists = os.LookupEnv("APP_TOKEN")
+
+	if exists != true {
+		// Print the value of the environment variable
+		log.Fatal("APP_TOKEN was not set")
+	}
+}
 
 // New creates a new middleware handler
 func New() fiber.Handler {
@@ -41,8 +57,8 @@ func CheckTokenIsValid(c *fiber.Ctx) error {
 		return err
 	}
 
-	if a == "123" {
+	if a == appToken {
 		return nil
 	}
-	return errors.New("Missing or malformed TOKEN")
+	return errors.New("Bad TOKEN")
 }
