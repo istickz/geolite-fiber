@@ -8,14 +8,11 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// See https://pkg.go.dev/github.com/oschwald/geoip2-golang#City for a full list of options you can use here to modify
-// what data is returned for a specific IP.
-
 var db *geoip2.Reader
 
 func init() {
 	var err error
-	db, err = geoip2.Open("geolite2_bases/GeoLite2-Country.mmdb")
+	db, err = geoip2.Open("geolite2_bases/GeoLite2-City.mmdb")
 	if err != nil {
 		log.Fatal(err)
 	}
