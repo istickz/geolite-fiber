@@ -8,7 +8,7 @@ Note if you want to receive only countries by IP, you can download GeoLite2-Coun
 
 Place database file to geolite2_bases folder and run
 
-```go
+```bash
 export APP_TOKEN=123
 go run geoip-maxmind
 ```
