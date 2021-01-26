@@ -25,9 +25,6 @@ func main() {
 		return handlers.GeoIP(c, "city")
 	})
 
-	// Listen on port :3000
-	//log.Fatal(app.Listen(":3000"))
-
 	// Listen from a different goroutine
 	go func() {
 		if err := app.Listen(":3000"); err != nil {
