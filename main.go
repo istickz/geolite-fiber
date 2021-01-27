@@ -10,10 +10,11 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 )
 
 func main() {
-	app := fiber.New()
+	app := fiber.New(fiber.Config{IdleTimeout: 5 * time.Second})
 	app.Use(logger.New())
 	app.Use(tokenauth.New())
 
@@ -38,6 +39,7 @@ func main() {
 	_ = <-c // This blocks the main thread until an interrupt is received
 	fmt.Println("Gracefully shutting down...")
 	_ = app.Shutdown()
+	fmt.Println("Gracefully shutting down...")
 
 	fmt.Println("Running cleanup tasks...")
 	handlers.CloseDB()
